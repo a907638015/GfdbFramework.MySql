@@ -1625,6 +1625,11 @@ namespace GfdbFramework.MySql
                             indices.Append(",");
 
                         indices.Append(item.Fields[i].FieldName);
+
+                        if (item.Sort == SortType.Ascending)
+                            indices.Append(" asc");
+                        else
+                            indices.Append(" desc");
                     }
 
                     indices.Append(")");
