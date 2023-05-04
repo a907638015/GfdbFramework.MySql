@@ -28,7 +28,7 @@
   
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
-    <PackageReference Include="GfdbFramework" Version="2.0.2" />
+    <PackageReference Include="GfdbFramework" Version="2.0.3" />
     <None Include="..\Asset\Images\logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
