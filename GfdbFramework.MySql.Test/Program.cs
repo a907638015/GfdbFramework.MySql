@@ -118,6 +118,12 @@ namespace GfdbFramework.MySql.Test
                 }
             }
 
+            dataContext.Users.Update(item => new Entities.User()
+            {
+                Telephone = null,
+                CreateTime = DateTime.Now
+            }, item => item.ID == 1);
+
             Console.WriteLine($"{Environment.NewLine}----- 获取 Users 表中所有数据 ----{Environment.NewLine}");
 
             //获取 Users 表中所有数据（直接循环该表对应的对象即可，会在首次尝试读取数据时查询表中所有数据）
