@@ -32,6 +32,7 @@ namespace GfdbFramework.MySql
         private readonly string _DBFunNowTimeMethodName = nameof(DBFun.NowTime);
         private readonly string _DBFunNewIntMethodName = nameof(DBFun.NewInt);
         private readonly string _DBFunNewLongMethodName = nameof(DBFun.NewLong);
+        private readonly string _DBFunNewGuidMethodName = nameof(DBFun.NewGuid);
         private readonly string _DBFunDiffYearMethodName = nameof(DBFun.DiffYear);
         private readonly string _DBFunDiffMonthMethodName = nameof(DBFun.DiffMonth);
         private readonly string _DBFunDiffDayMethodName = nameof(DBFun.DiffDay);
@@ -716,6 +717,11 @@ namespace GfdbFramework.MySql
                 else if ((field.Parameters == null || field.Parameters.Count < 1) && field.MethodInfo.Name == _DBFunNewLongMethodName)
                 {
                     return new ExpressionInfo("round(rand() * -9223372036854775808) + floor(rand() * 9223372036854775807)", OperationType.Add);
+                }
+                //DBFun.NewGuid 函数
+                else if ((field.Parameters == null || field.Parameters.Count < 1) && field.MethodInfo.Name == _DBFunNewGuidMethodName)
+                {
+                    return new ExpressionInfo("uuid()", OperationType.Call);
                 }
                 //DBFun 的各种日期差值计算函数
                 else if (field.Parameters != null && field.MethodInfo.ReturnType == _IntType && field.Parameters.Count == 2 && field.Parameters[0].DataType == _DateTimeType && field.Parameters[1].DataType == _DateTimeType &&
