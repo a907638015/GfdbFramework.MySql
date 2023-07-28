@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.33423.256
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GfdbFramework.MySql", "GfdbFramework.MySql\GfdbFramework.MySql.csproj", "{8DC40440-9FDD-40C0-BA89-C7638087DCE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GfdbFramework.MySql.Test", "GfdbFramework.MySql.Test\GfdbFramework.MySql.Test.csproj", "{0A0F2CBE-DA6F-4390-895B-E33F7AB6F93D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GfdbFramework.MySql.Test", "GfdbFramework.MySql.Test\GfdbFramework.MySql.Test.csproj", "{0A0F2CBE-DA6F-4390-895B-E33F7AB6F93D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

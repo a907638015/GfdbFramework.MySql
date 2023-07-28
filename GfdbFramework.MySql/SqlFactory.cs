@@ -519,7 +519,7 @@ namespace GfdbFramework.MySql
                                 if (field.Parameters.Count == 1 && field.Parameters[0] is BasicField formatField)
                                 {
                                     if (formatField.DataType != _StringType)
-                                        throw new Exception("Sqlite 日期格式化只支持字符串格式的参数");
+                                        throw new Exception("MySql 日期格式化只支持字符串格式的参数");
 
                                     if (field.Type == FieldType.Constant)
                                     {
@@ -527,7 +527,8 @@ namespace GfdbFramework.MySql
                                             .Replace("ffffff", "%f")
                                             .Replace("ss", "%s")
                                             .Replace("mm", "%i")
-                                            .Replace("hh", "%H")
+                                            .Replace("hh", "%h")
+                                            .Replace("HH", "%H")
                                             .Replace("yyyy", "%Y")
                                             .Replace("MM", "%m")
                                             .Replace("dd", "%d");
