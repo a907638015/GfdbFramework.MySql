@@ -539,7 +539,7 @@ namespace GfdbFramework.MySql
 
                                         format = formatExpression.Type == OperationType.Subquery ? $"({formatExpression.SQL})" : formatExpression.SQL;
 
-                                        format = $"replace(replace(replace(replace(replace(replace(replace({format}, 'ffffff', '%f'), 'ss', '%s'), 'mm', '%i'), 'hh', '%H'), 'yyyy', '%Y'), 'MM', '%m'), 'dd', '%d')";
+                                        format = $"replace(replace(replace(replace(replace(replace(replace(replace({format}, 'HH', '%H'), 'ffffff', '%f'), 'ss', '%s'), 'mm', '%i'), 'hh', '%h'), 'yyyy', '%Y'), 'MM', '%m'), 'dd', '%d')";
                                     }
                                 }
                                 else
