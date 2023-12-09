@@ -64,6 +64,7 @@ namespace GfdbFramework.MySql
         private readonly Type _DateTimeType = typeof(DateTime);
         private readonly Type _MathType = typeof(Math);
         private readonly Type _DBFunType = typeof(DBFun);
+        private readonly Type _NullableType = typeof(int?).GetGenericTypeDefinition();
 
         /// <summary>
         /// 创建二元操作字段的基础表示 Sql 信息。
@@ -725,7 +726,9 @@ namespace GfdbFramework.MySql
                     return new ExpressionInfo("uuid()", OperationType.Call);
                 }
                 //DBFun 的各种日期差值计算函数
-                else if (field.Parameters != null && field.MethodInfo.ReturnType == _IntType && field.Parameters.Count == 2 && field.Parameters[0].DataType == _DateTimeType && field.Parameters[1].DataType == _DateTimeType &&
+                else if (field.Parameters != null && field.MethodInfo.ReturnType == _IntType && field.Parameters.Count == 2 
+                    && (field.Parameters[0].DataType == _DateTimeType || (field.Parameters[0].DataType.IsGenericType && field.Parameters[0].DataType.GetGenericTypeDefinition() == _NullableType && field.Parameters[0].DataType.GetGenericArguments()[0] == _DateTimeType)) 
+                    && (field.Parameters[1].DataType == _DateTimeType || (field.Parameters[1].DataType.IsGenericType && field.Parameters[1].DataType.GetGenericTypeDefinition() == _NullableType && field.Parameters[1].DataType.GetGenericArguments()[0] == _DateTimeType)) &&
                     (field.MethodInfo.Name == _DBFunDiffYearMethodName
                     || field.MethodInfo.Name == _DBFunDiffMonthMethodName
                     || field.MethodInfo.Name == _DBFunDiffDayMethodName
@@ -765,7 +768,9 @@ namespace GfdbFramework.MySql
                     }
                 }
                 //DNFun 的各种日期添加函数
-                else if (field.Parameters != null && field.MethodInfo.ReturnType == _DateTimeType && field.Parameters.Count == 2 && field.Parameters[0].DataType == _DateTimeType && field.Parameters[1].DataType == _IntType &&
+                else if (field.Parameters != null && field.MethodInfo.ReturnType == _DateTimeType && field.Parameters.Count == 2 
+                    && (field.Parameters[0].DataType == _DateTimeType || (field.Parameters[0].DataType.IsGenericType && field.Parameters[0].DataType.GetGenericTypeDefinition() == _NullableType && field.Parameters[0].DataType.GetGenericArguments()[0] == _DateTimeType))
+                    && field.Parameters[1].DataType == _IntType &&
                     (field.MethodInfo.Name == _DBFunAddYearMethodName
                     || field.MethodInfo.Name == _DBFunAddMonthMethodName
                     || field.MethodInfo.Name == _DBFunAddDayMethodName

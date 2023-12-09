@@ -39,5 +39,10 @@ namespace GfdbFramework.MySql.Test.Entities
         /// 获取或设置该用户的手机号码。
         /// </summary>
         public string Telephone { get; set; }
+
+        /// <summary>
+        /// 获取或设置该用户的最后登录时间。
+        /// </summary>
+        public DateTime? LastLoginTime { get; set; }
     }
 }

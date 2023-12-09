@@ -45,7 +45,8 @@ namespace GfdbFramework.MySql.Test
                         Password = "123456",
                         Name = userNames[i],
                         CreateTime = DateTime.Now,
-                        JobNumber = GetRandomString(5)
+                        JobNumber = GetRandomString(5),
+                        LastLoginTime = DateTime.Now
                     };
 
                     dataContext.Users.Insert(user);
@@ -122,7 +123,7 @@ namespace GfdbFramework.MySql.Test
             {
                 Telephone = null,
                 CreateTime = DateTime.Now
-            }, item => item.ID == 1);
+            }, item => item.ID == 1 && item.CreateTime.DiffDay(DateTime.Today) > 0);
 
             Console.WriteLine($"{Environment.NewLine}----- 获取 Users 表中所有数据 ----{Environment.NewLine}");
 
